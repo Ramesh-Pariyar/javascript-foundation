@@ -48,16 +48,14 @@ function paramify(obj) {
       Arr.push(`${key}=${obj[key]}`);
     }
   }
-  return Arr.join("&");
+  return Arr.sort().join("&");
 }
 
 function paramifyObjectKeys(obj) {
   let pairs = [];
-
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      pairs.push(`${key}=${obj[key]}`);
-    }
+  let keys = Object.keys(obj);
+  for (let key of keys) {
+    pairs.push(`${key}=${obj[key]}`);
   }
   pairs.sort();
 
@@ -65,7 +63,7 @@ function paramifyObjectKeys(obj) {
 }
 
 function sort(array) {
-  let arr = array.splice();
+  let arr = array.slice();
 
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
