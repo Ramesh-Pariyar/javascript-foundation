@@ -41,4 +41,9 @@ class Cat extends Mammal {
   meow() {
     return "meow";
   }
+  haveBaby(color) {
+    const baby = new Cat(`Baby ${this.name}`, color);
+    this.offspring.push(baby);
+    return baby;
+  }
 }
